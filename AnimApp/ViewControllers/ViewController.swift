@@ -19,16 +19,17 @@ class ViewController: UIViewController {
     @IBOutlet var durationLabel: UILabel!
     @IBOutlet var delayLabel: UILabel!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setLabels()
+    }
+
     // MARK: - Private properties
     private var randomAnimation = Animation.getRandomAnimation()
 
     // MARK: - IBActions
     @IBAction func runButtonDidTapped(_ sender: UIButton) {
-        presetLabel.text = "Preset: \(randomAnimation.name)"
-        curveLabel.text = "Curve: \(randomAnimation.curve)"
-        forceLabel.text = "Force: \(String(format: "%.2f", randomAnimation.force))"
-        durationLabel.text = "Duration: \(String(format: "%.2f", randomAnimation.duration))"
-        delayLabel.text = "Delay: \(String(format: "%.2f", randomAnimation.delay))"
+        setLabels()
 
         animationView.animation = randomAnimation.name
         animationView.curve = randomAnimation.curve
@@ -42,3 +43,13 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: - Private Methods
+extension ViewController {
+    private func setLabels() {
+        presetLabel.text = "Preset: \(randomAnimation.name)"
+        curveLabel.text = "Curve: \(randomAnimation.curve)"
+        forceLabel.text = "Force: \(String(format: "%.2f", randomAnimation.force))"
+        durationLabel.text = "Duration: \(String(format: "%.2f", randomAnimation.duration))"
+        delayLabel.text = "Delay: \(String(format: "%.2f", randomAnimation.delay))"
+    }
+}
