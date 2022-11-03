@@ -13,5 +13,5 @@ class DataStore {
     var animations = AnimationPreset.allCases
     let curves = AnimationCurve.allCases
 
-    init() {}
+    private init() {}
 }
